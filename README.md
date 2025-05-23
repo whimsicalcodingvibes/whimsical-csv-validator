@@ -2,8 +2,6 @@
 
 A TypeScript CLI tool for validating CSV data against user-defined JSON validation rules.
 
-© 2025 Whimsical Coding Vibes. Open source project under the MIT License.
-
 ## About
 
 CSV Validator is a powerful command-line utility designed to validate and clean CSV data files according to customizable validation rules. Perfect for data engineers, analysts, and developers who work with CSV data and need to ensure data quality before processing.

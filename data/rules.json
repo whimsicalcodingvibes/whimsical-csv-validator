@@ -1,0 +1,65 @@
+{
+  "rules": [
+    {
+      "column": "product_id",
+      "type": "required",
+      "message": "Product ID is required"
+    },
+    {
+      "column": "product_id",
+      "type": "regex",
+      "value": "^PRD-[0-9]{6}$",
+      "message": "Product ID must match pattern PRD-XXXXXX (where X is a digit)"
+    },
+    {
+      "column": "name",
+      "type": "required",
+      "message": "Product name is required"
+    },
+    {
+      "column": "name",
+      "type": "minLength",
+      "value": 3,
+      "message": "Product name must be at least 3 characters"
+    },
+    {
+      "column": "name",
+      "type": "maxLength",
+      "value": 100,
+      "message": "Product name must be at most 100 characters"
+    },
+    {
+      "column": "category",
+      "type": "in",
+      "value": ["Electronics", "Clothing", "Home", "Books", "Food", "Other"],
+      "message": "Invalid product category"
+    },
+    {
+      "column": "price",
+      "type": "required",
+      "message": "Price is required"
+    },
+    {
+      "column": "price",
+      "type": "min",
+      "value": 0.01,
+      "message": "Price must be greater than zero"
+    },
+    {
+      "column": "in_stock",
+      "type": "in",
+      "value": ["yes", "no"],
+      "message": "In stock must be 'yes' or 'no'"
+    },
+    {
+      "column": "release_date",
+      "type": "dateFormat",
+      "value": "YYYY-MM-DD",
+      "message": "Release date must be in format YYYY-MM-DD"
+    }
+  ],
+  "settings": {
+    "strictHeaders": true,
+    "requiredColumns": ["product_id", "name", "price"]
+  }
+}

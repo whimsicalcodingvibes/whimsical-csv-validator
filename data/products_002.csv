@@ -1,0 +1,10 @@
+product_id,name,category,price,in_stock,release_date
+PRD-000010,Gaming Laptop,Electronics,1299.99,yes,2025-05-22
+PRD-000011,Cotton Hoodie,Clothing,59.95,yes,2024-12-10
+PRD-000012,Air Fryer,Home,89.99,no,2025-01-18
+PRD-0000\3,,Books,24.50,yes,2024-11-30
+PRD-000014,Fitness Tracker,Gadgets,149.95,yes,2025/03/12
+PRD-00015B,Floor Lamp,Home,34.99,yes,2025-02-05
+PRD-000016,Bluetooth Speaker,Electronics,-49.99,yes,2025-01-25
+PRD-000017,Energy Drinks,Food,7.99,maybe,2025-04-15
+PRD-000018,Ergonomic Keyboard,Home,R$ 129,no,invalid-date

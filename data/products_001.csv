@@ -1,0 +1,10 @@
+product_id,name,category,price,in_stock,release_date
+PRD-000001,Smartphone X,Electronics,799.99,yes,2025-03-15
+PRD-000002,Leather Jacket,Clothing,199.50,yes,2025-01-20
+PRD-000003,Coffee Maker,Home,49.99,no,2024-11-05
+PRD-000004,,Books,12.99,yes,2025-02-10
+PRD-000005,Smart Watch,Gadgets,299.99,yes,2025-04-01
+PRD-00006A,Desk Lamp,Home,24.95,yes,2025-01-15
+PRD-000007,Wireless Earbuds,Electronics,-29.99,yes,2025-02-20
+PRD-000008,Protein Bars,Food,9.99,maybe,2025-01-10
+PRD-000009,Office Chair,Home,149.99,no,invalid-date

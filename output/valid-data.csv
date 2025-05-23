@@ -1,0 +1,4 @@
+product_id,name,category,price,in_stock,release_date
+PRD-000001,Smartphone X,Electronics,799.99,yes,2025-03-15
+PRD-000002,Leather Jacket,Clothing,199.50,yes,2025-01-20
+PRD-000003,Coffee Maker,Home,49.99,no,2024-11-05

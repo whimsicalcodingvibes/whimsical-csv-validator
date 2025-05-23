@@ -1,0 +1,52 @@
+{
+  "valid": false,
+  "totalRows": 9,
+  "validRows": 3,
+  "errors": [
+    {
+      "rowNumber": 5,
+      "column": "name",
+      "value": "",
+      "rule": "minLength",
+      "message": "Product name must be at least 3 characters"
+    },
+    {
+      "rowNumber": 6,
+      "column": "category",
+      "value": "Gadgets",
+      "rule": "in",
+      "message": "Invalid product category"
+    },
+    {
+      "rowNumber": 7,
+      "column": "product_id",
+      "value": "PRD-00006A",
+      "rule": "regex",
+      "message": "Product ID must match pattern PRD-XXXXXX (where X is a digit)"
+    },
+    {
+      "rowNumber": 8,
+      "column": "price",
+      "value": "-29.99",
+      "rule": "min",
+      "message": "Price must be greater than zero"
+    },
+    {
+      "rowNumber": 9,
+      "column": "in_stock",
+      "value": "maybe",
+      "rule": "in",
+      "message": "In stock must be 'yes' or 'no'"
+    },
+    {
+      "rowNumber": 10,
+      "column": "release_date",
+      "value": "invalid-date",
+      "rule": "dateFormat",
+      "message": "Release date must be in format YYYY-MM-DD"
+    }
+  ],
+  "timestamp": "2025-05-16T09:05:13.404Z",
+  "inputFile": "examples\\input.csv",
+  "rulesFile": "examples\\rules.json"
+}

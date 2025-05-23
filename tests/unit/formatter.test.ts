@@ -1,4 +1,5 @@
 import { CSVData } from "./../../src/types";
+import { formatCSV } from "./../../src/formatter";
 describe("Formatter", () => {
   describe("formatCSV", () => {
     it("should format CSV data with headers correctly", () => {
@@ -95,23 +96,21 @@ describe("Formatter", () => {
         'name,bio\nJohn Doe,"Line 1\nLine 2"\nJane Smith,Single line bio'
       );
     });
+
+    it("should properly quote fields with carriage returns", () => {
+      const csvData: CSVData = {
+        headers: ["name", "notes"],
+        rows: [
+          ["John Doe", "Note with\rcarriage return"],
+          ["Jane Smith", "Regular note"],
+        ],
+        rowCount: 2,
+      };
+
+      const result = formatCSV(csvData);
+      expect(result).toBe(
+        'name,notes\nJohn Doe,"Note with\rcarriage return"\nJane Smith,Regular note'
+      );
+    });
   });
 });
-function formatCSV(csvData: CSVData, delimiter: string = ","): string {
-  const headers =
-    csvData.headers.length > 0 ? csvData.headers.join(delimiter) + "\n" : "";
-  const rows = csvData.rows
-    .map((row) =>
-      row
-        .map((field) =>
-          field.includes(delimiter) ||
-          field.includes('"') ||
-          field.includes("\n")
-            ? `"${field.replace(/"/g, '""')}"`
-            : field
-        )
-        .join(delimiter)
-    )
-    .join("\n");
-  return headers + rows;
-}

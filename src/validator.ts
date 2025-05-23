@@ -47,18 +47,13 @@ export function validateCSV(
       return errors;
     }
   }
-
-  // Process each row
   for (let rowIndex = 0; rowIndex < csvData.rows.length; rowIndex++) {
     const row = csvData.rows[rowIndex];
-    const rowNumber = rowIndex + (config.hasHeader ? 2 : 1); // +2 if has header (1-based + header row)
+    const rowNumber = rowIndex + (config.hasHeader ? 2 : 1);
 
-    // Apply each rule
     for (const rule of rules.rules) {
       let columnIndex: number;
       let columnName: string;
-
-      // Determine column index and name
       if (typeof rule.column === "number") {
         columnIndex = rule.column;
         columnName = csvData.headers[columnIndex] || `Column ${columnIndex}`;
@@ -66,7 +61,6 @@ export function validateCSV(
         columnName = rule.column;
         columnIndex = csvData.headers.indexOf(columnName);
 
-        // Skip rules for non-existent columns unless strictHeaders is enabled
         if (columnIndex === -1) {
           if (rules.settings?.strictHeaders) {
             errors.push({
@@ -84,11 +78,8 @@ export function validateCSV(
           continue;
         }
       }
-
       const cellValue = row[columnIndex] || "";
 
-      // Validate cell against rule
-      // Safely check if validator exists for this rule type
       const validator = validators[rule.type as keyof typeof validators];
       if (!validator) {
         errors.push({
@@ -100,9 +91,6 @@ export function validateCSV(
         });
         continue;
       }
-
-      // Use type assertion to call the validator with the rule value
-      // This is needed because TypeScript can't infer the correct type for all possible validators
       const isValid = validator(cellValue, rule.value as any);
       if (!isValid) {
         errors.push({
@@ -134,18 +122,13 @@ export function getValidRows(
   csvData: CSVData,
   errors: ValidationError[]
 ): CSVData {
-
   const invalidRowNumbers = new Set<number>();
   errors.forEach((error) => {
-
     if (error.rowNumber > 0) {
       invalidRowNumbers.add(error.rowNumber);
     }
   });
-
-  // Filter out invalid rows
   const validRows = csvData.rows.filter((_, index) => {
-    // Convert 0-based index to 1-based row number (+2 if has header)
     const rowNumber = index + (csvData.headers.length > 0 ? 2 : 1);
     return !invalidRowNumbers.has(rowNumber);
   });

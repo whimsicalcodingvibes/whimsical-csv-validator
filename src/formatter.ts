@@ -8,8 +8,6 @@ import { CSVData } from "./types";
  */
 export function formatCSV(csvData: CSVData, delimiter: string = ","): string {
   const lines: string[] = [];
-
-  // Add headers if they exist
   if (csvData.headers.length > 0) {
     lines.push(
       csvData.headers
@@ -18,7 +16,6 @@ export function formatCSV(csvData: CSVData, delimiter: string = ","): string {
     );
   }
 
-  // Add data rows
   csvData.rows.forEach((row) => {
     lines.push(
       row.map((field) => formatCSVField(field, delimiter)).join(delimiter)
@@ -29,7 +26,6 @@ export function formatCSV(csvData: CSVData, delimiter: string = ","): string {
 }
 
 function formatCSVField(value: string, delimiter: string): string {
-  // Determine if the field needs to be quoted
   const needsQuoting =
     value.includes(delimiter) ||
     value.includes('"') ||
@@ -40,6 +36,5 @@ function formatCSVField(value: string, delimiter: string): string {
     return value;
   }
 
-  // Double any existing quotes and wrap in quotes
   return `"${value.replace(/"/g, '""')}"`;
 }

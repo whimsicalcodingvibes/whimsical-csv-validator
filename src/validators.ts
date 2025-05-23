@@ -53,7 +53,7 @@ export function minLength(value: string, min: number): boolean {
  * @returns True if the value's length is less than or equal to max, false otherwise.
  */
 export function maxLength(value: string, max: number): boolean {
-  if (!value) return true; // Empty values pass max length check
+  if (!value) return true;
   return value.length <= max;
 }
 
@@ -76,7 +76,7 @@ export function min(value: string, min: number): boolean {
  * @returns True if the value is less than or equal to max, false otherwise.
  */
 export function max(value: string, max: number): boolean {
-  if (!value) return true; // Empty values pass max check
+  if (!value) return true;
   const numValue = Number(value);
   return !isNaN(numValue) && numValue <= max;
 }
@@ -99,7 +99,7 @@ export function in_(value: string, list: string[]): boolean {
  * @returns True if the value is not in the list, false otherwise.
  */
 export function notIn(value: string, list: string[]): boolean {
-  if (!value) return true; // Empty values pass not-in check
+  if (!value) return true;
   return !list.includes(value);
 }
 
@@ -112,7 +112,6 @@ export function notIn(value: string, list: string[]): boolean {
 export function dateFormat(value: string, format: string): boolean {
   if (!value) return false;
   try {
-    // Simple implementation - just checks if it's a valid date
     const date = parseISO(value);
     return isValid(date);
   } catch {
@@ -127,7 +126,6 @@ export function dateFormat(value: string, format: string): boolean {
  */
 export function email(value: string): boolean {
   if (!value) return false;
-  // Basic email regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(value);
 }
@@ -145,9 +143,6 @@ export function custom(value: string, customValidator: any): boolean {
   return true;
 }
 
-// Map rule types to validator functions
-// Using type any for validator functions to simplify the interface
-// Each specific validator handles its own proper typing internally
 export const validators: Record<
   RuleType,
   (value: string, ruleValue?: any) => boolean

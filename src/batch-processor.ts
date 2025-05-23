@@ -44,7 +44,6 @@ program
 
 const options = program.opts();
 
-// Create output directory if it doesn't exist
 if (!existsSync(options.output)) {
   try {
     mkdirSync(options.output, { recursive: true });
@@ -57,7 +56,6 @@ if (!existsSync(options.output)) {
   }
 }
 
-// Read rules file
 let rules;
 try {
   const rulesContent = readFileSync(options.rules, "utf8");

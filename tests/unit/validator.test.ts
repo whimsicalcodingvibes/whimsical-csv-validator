@@ -77,10 +77,8 @@ describe("Validator", () => {
       const rules: ValidationRules = {
         rules: [{ column: "age", type: RuleType.MIN, value: 25 }],
       };
-
       const errors = validateCSV(csvData, rules, config);
 
-      // Row 4 has age less than 25
       expect(errors.length).toBeGreaterThan(0);
       const ageError = errors.find(
         (e) => e.column === "age" && e.rowNumber === 4
@@ -119,10 +117,8 @@ describe("Validator", () => {
           { column: "email", type: RuleType.EMAIL },
         ],
       };
-
       const errors = validateCSV(csvData, rules, failFastConfig);
 
-      // Should stop after finding the first error
       expect(errors.length).toBe(1);
     });
   });

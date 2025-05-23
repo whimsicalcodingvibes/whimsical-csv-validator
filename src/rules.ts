@@ -9,17 +9,14 @@ import { ValidationRules } from "./types";
 export function parseRules(content: string): ValidationRules {
   try {
     const rules = JSON.parse(content);
-
-    // Basic validation of the rules schema
     if (!rules.rules || !Array.isArray(rules.rules)) {
       throw new Error('Invalid rules format: missing or invalid "rules" array');
     }
 
-    // Validate each rule has required properties
     interface Rule {
       column: string;
       type: string;
-      [key: string]: any; // For any additional properties rules might have
+      [key: string]: any;
     }
 
     rules.rules.forEach((rule: Rule, index: number) => {

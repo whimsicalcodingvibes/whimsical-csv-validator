@@ -17,9 +17,7 @@ export function parseCSV(content: string, config: Config): CSVData {
     };
 
     const records = parse(content, options);
-
     if (config.hasHeader) {
-      // If CSV has headers, parse returns an array of objects
       const headers = Object.keys(records[0] || {});
       const rows: string[][] = records.map((record: Record<string, string>) =>
         headers.map((header: string) => record[header])
@@ -31,7 +29,6 @@ export function parseCSV(content: string, config: Config): CSVData {
         rowCount: records.length,
       };
     } else {
-      // If CSV has no headers, parse returns an array of arrays
       return {
         headers: [],
         rows: records,

@@ -35,11 +35,9 @@ program
 const options = program.opts();
 
 try {
-  // Read input files
   const csvContent = readFileSync(options.input, "utf8");
   const rulesContent = readFileSync(options.rules, "utf8");
 
-  // Parse files
   const config: Config = {
     delimiter: options.delimiter,
     hasHeader: options.header,
@@ -49,10 +47,8 @@ try {
   const csvData = parseCSV(csvContent, config);
   const rules = parseRules(rulesContent);
 
-  // Validate CSV against rules
   const validationErrors = validateCSV(csvData, rules, config);
 
-  // Generate and output report
   const report = generateReport(
     validationErrors,
     csvData,
@@ -64,8 +60,6 @@ try {
     writeFileSync(options.output, JSON.stringify(report, null, 2));
     console.log(chalk.green(`Validation report saved to ${options.output}`));
   }
-
-  // Export valid rows if requested
   if (options.validOutput) {
     const validRows = getValidRows(csvData, validationErrors);
     const validCsv = formatCSV(validRows, config.delimiter);
@@ -77,12 +71,10 @@ try {
     printSummary(report);
   }
 
-  // Exit with error code if validation failed
   if (!report.valid) {
     process.exit(1);
   }
 } catch (error: unknown) {
-  // Properly type the error for TypeScript
   const errorMessage = error instanceof Error ? error.message : String(error);
   console.error(chalk.red("Error:"), errorMessage);
   process.exit(1);

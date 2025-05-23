@@ -99,10 +99,8 @@ describe("Reporter", () => {
       ];
 
       const report = generateReport(errors, csvData);
-
       expect(report.valid).toBe(false);
       expect(report.totalRows).toBe(2);
-      // Should be 1 since all errors are in the same row
       expect(report.validRows).toBe(1);
       expect(report.errors.length).toBe(3);
     });

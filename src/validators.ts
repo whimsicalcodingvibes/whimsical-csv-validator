@@ -8,10 +8,10 @@ type ValueValidator<T> = (value: string, ruleValue: T) => boolean;
 /**
  * Required value validator
  * @param value - The value to validate.
- * @returns True if the value is defined and not null, false otherwise.
+ * @returns True if the value is defined, not null, and not an empty string, false otherwise.
  */
 export function required(value: string): boolean {
-  return value !== undefined && value !== null;
+  return value !== undefined && value !== null && value !== "";
 }
 
 /**

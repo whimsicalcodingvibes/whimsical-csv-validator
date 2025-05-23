@@ -214,15 +214,36 @@ The JSON validation report includes:
 - The `--fail-fast` option can improve performance by stopping validation on the first error
 - The tool uses streaming CSV parsing for efficient memory usage
 
+
+
+## Testing
+
+The project includes a comprehensive test suite using Jest. The tests cover:
+
+- Unit tests for individual components
+- Integration tests for the full validation workflow
+
+To run the tests:
+
+```bash
+npm test
+```
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+For more information about the test suite, see the [Tests README](./tests/README.md).
 
 ## Contributing
 
 Contributions are welcome! Please see the [CONTRIBUTING.md](./CONTRIBUTING.md) file for guidelines on how to contribute.
 
 Contributors are expected to adhere to our [Code of Conduct](./CODE_OF_CONDUCT.md).
+
+When contributing, please ensure:
+1. All tests pass before submitting a pull request
+2. New functionality is covered by tests
+3. Documentation is updated as needed
 
 ## Support
 
